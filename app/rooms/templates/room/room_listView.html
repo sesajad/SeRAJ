@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Homepage</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'rooms:groups_list' %}">Rooms</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ rg }}</li>
+    </ol>
+  </nav>
+  <h2 class="mb-3">{{ rg }}</h2>
+  <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Capacity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for room in rg.room_set.all %}
+          <tr>
+            <td class="align-middle">{{ room.name }}</td>
+            <td class="align-middle">{{ room.capacity }}</td>
+            <td class="text-right">
+              <a href="{% url 'rooms:room_view' rg.pk room.pk %}" class="btn btn-primary">View Calendar</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center font-italic" colspan="5">You haven't created any room yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

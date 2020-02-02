@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.db.models import Avg, Count
@@ -33,4 +32,3 @@ class AdministrativesSignUpView(CreateView):
 @administrative_required()
 def HomeView(request):
     return render(request, 'administratives_HomeView.html')
-

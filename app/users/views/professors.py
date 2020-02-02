@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import login
+from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.db.models import Count
@@ -12,9 +13,6 @@ from ..decorators import professor_required, administrative_required
 from ..forms import ProfessorSignUpForm
 from ..models import User
 
-
-
-@method_decorator([login_required, administrative_required], name='dispatch')
 class ProfessorsSignUpView(CreateView):
     model = User
     form_class = ProfessorSignUpForm
@@ -26,6 +24,9 @@ class ProfessorsSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        gn = 'prof__%s' % user.department
+        user.groups.add(Group.objects.get(name=gn))
+        user.save()
         return redirect('home')
 
 @login_required()

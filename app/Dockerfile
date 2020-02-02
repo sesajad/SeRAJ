@@ -6,4 +6,4 @@ ADD ./ /app/
 WORKDIR /app/
 RUN python3 manage.py migrate
 RUN python3 manage.py createsuperuser
-CMD gunicorn -b 0.0.0.0:8000 SeRAJ.wsgi
+CMD python3 manage.py runserver 0.0.0.0:8000

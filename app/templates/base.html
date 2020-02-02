@@ -26,9 +26,9 @@
                 <a href="{% url 'home' %}">
                   SeRAJ
                   {% if user.is_authenticated %}
-                    {% if user.is_Administrative %}
+                    {% if user.is_staff %}
                       <span class="icon-feather" data-toggle="tooltip" data-placement="right" title="Administrative profile"></span>
-                    {% elif user.is_Professor%}
+                    {% elif user.is_professor%}
                       <span class="icon-graduation-cap" data-toggle="tooltip" data-placement="right" title="Professor profile"></span>
                     {% endif %}
                   {% endif %}

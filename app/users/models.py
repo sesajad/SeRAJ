@@ -3,7 +3,5 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    is_TA = models.BooleanField(default=False)
-    is_Professor = models.BooleanField(default=False)
-    is_Administrative = models.BooleanField(default=False)
-
+    department = models.CharField(max_length=255, blank=True)
+    is_professor = models.BooleanField(default=False)

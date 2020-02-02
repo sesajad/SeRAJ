@@ -42,11 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users',
-    'crispy_forms',
     'rooms',
     'cal',
     'reservation',
-
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -64,8 +63,7 @@ ROOT_URLCONF = 'SeRAJ.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,11 +138,9 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_URL = 'login'
-
 LOGOUT_URL = 'logout'
 
 LOGIN_REDIRECT_URL = 'home'
-
 LOGOUT_REDIRECT_URL = 'home'
 
 

@@ -1,12 +1,11 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 
-
 def home(request):
     if request.user.is_authenticated:
-        if request.user.is_Administrative:
+        if request.user.is_staff:
             return redirect('administratives:administratives_home')
-        elif request.user.is_Professor:
+        elif request.user.is_professor:
             return redirect('professors:professors_home')
     return render(request, 'home.html')
 

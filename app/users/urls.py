@@ -7,7 +7,7 @@ urlpatterns = [
 
     path('professors/', include(([
         path('', professors.HomeView, name='professors_home'),
-        path('add/', professors.ProfessorsSignUpView.as_view(), name='professors_add'),
+        path('signup/', professors.ProfessorsSignUpView.as_view(), name='professors_add'),
     ], 'users'), namespace='professors')),
 
     path('administratives/', include(([

@@ -13,7 +13,7 @@ from .forms import EventForm
 from django.contrib.auth.decorators import login_required
 
 @login_required()
-def calendar_view(request, room_pk):
+def calendar_view(request, group_pk, room_pk):
     context = {}
 
     d = get_date(request.GET.get('month', None))
@@ -23,6 +23,7 @@ def calendar_view(request, room_pk):
     context['calendar'] = mark_safe(html_cal)
     context['prev_month'] = prev_month(d)
     context['next_month'] = next_month(d)
+    context['gpk'] = group_pk
     context['pk'] = room_pk
 
     return render(request, "cal/calendar.html", context)

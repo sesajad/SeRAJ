@@ -3,11 +3,9 @@
 {% block content %}
 <a href="{% url 'administratives:administratives_add' %} " class="btn btn-primary" role="button">Add an Administrative</a>
 <br>
-<a href ="{% url 'professors:professors_add' %} " class = "btn btn-primary" role="button">Add a Professor</a>
-<br>
 <a href ="{% url 'rooms:room_create' %} " class = "btn btn-primary" role="button">Add a Room</a>
 <br>
-<a href ="{% url 'rooms:rooms_list' %} " class = "btn btn-primary" role="button">Department Rooms</a>
+<a href ="{% url 'rooms:groups_list' %} " class = "btn btn-primary" role="button">Rooms</a>
 <br>
 <a href ="{% url 'reservation:reservation_create' %} " class = "btn btn-primary" role="button">Reserve</a>
 <br>

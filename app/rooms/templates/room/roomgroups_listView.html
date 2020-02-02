@@ -4,26 +4,26 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'home' %}">Homepage</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Department Rooms</li>
+      <li class="breadcrumb-item active" aria-current="page">Rooms</li>
     </ol>
   </nav>
-  <h2 class="mb-3">Department Rooms</h2>
+  <h2 class="mb-3">Groups</h2>
   <div class="card">
     <table class="table mb-0">
       <thead>
         <tr>
           <th>Name</th>
-          <th>Capacity</th>
+          <th>Privilege</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        {% for room in rooms %}
+        {% for rg in roomgroups %}
           <tr>
-            <td class="align-middle">{{ room.name }}</td>
-            <td class="align-middle">{{ room.capacity }}</td>
+            <td class="align-middle">{{ rg.name }}</td>
+            <td class="align-middle">{% if 'rooms.'|add:rg.own.codename in perms %}Owner{% elif 'rooms.'|add:rg.approve.codename in perms %}Approver{% endif %}</td>
             <td class="text-right">
-              <a href="{% url 'rooms:room_view' room.pk %}" class="btn btn-primary">View Calendar</a>
+              <a href="{% url 'rooms:rooms_list' rg.pk %}" class="btn btn-primary">Go</a>
             </td>
           </tr>
         {% empty %}
