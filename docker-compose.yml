@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: ./app/
+  nginx:
+    image: docker.xaas.ir/nginx
+    volumes:
+      - ./nnginxconf/:/etc/nginx/conf.d/
+    ports:
+      - 1337:80
+    depends_on:
+      - web
