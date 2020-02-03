@@ -8,6 +8,7 @@ urlpatterns = [
         path('create/', CreateReservation.as_view() , name='reservation_create'),
         path('<int:pk>/', ReservationUpdateView.as_view() , name='reservation_view'),
         path('update_status/<int:reservation_pk>', ReservationUpdateStatus, name='reservation_status'),
+        path('decline/<int:reservation_pk>', ReservationDecline, name='reservation_decline'),
     ], 'reservation'), namespace='reservations')),
 
 ]

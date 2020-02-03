@@ -32,6 +32,9 @@ for g in room_groups:
         r.group = rg
         r.save()
 
+g = Group(name='prof')
+g.save()
+
 for d, _ in department_choices:
     g = Group(name='prof__%s' % d)
     g.save()

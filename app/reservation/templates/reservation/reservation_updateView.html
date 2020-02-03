@@ -20,7 +20,7 @@
         {{ form|crispy }}
         <a href="{% url 'reservation:reservation_status' reserve.pk %}" class="btn btn-success" role="button">Accept</a>
         <a href="{% url 'reservation:reservation_list' %}" class="btn btn-outline-secondary" role="button">Back</a>
-        <a href="{% url 'home' %}" class="btn btn-danger float-right">Decline</a>
+        <a href="{% url 'reservation:reservation_decline' reserve.pk %}" class="btn btn-danger float-right">Decline</a>
       </form>
     </div>
   </div>

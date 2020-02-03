@@ -1,25 +1,28 @@
 from django.db import models
-from users.models import User
 from django.utils import timezone
 
+from users.models import User
 from rooms.models import Room
 from cal.models import Event
 
 class Reservation(models.Model):
     PENDING = 0
-    ACCEPTED = 1
-    DENIED = 2
+    APPROVED = 1
+    ACCEPTED = 2
+    DENIED = 3
 
     STATUS = (
         (PENDING, "Pending"),
+        (APPROVED, "Approved"),
         (ACCEPTED, "Accepted"),
         (DENIED, "Denied"),
     )
 
     title = models.CharField(max_length=200)
 
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='owning_req', on_delete=models.CASCADE)
+    approver = models.ForeignKey(User, related_name='assigned_req', null=True, on_delete=models.CASCADE)
+    participants_gmail = models.TextField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
     status = models.SmallIntegerField(choices=STATUS, default=PENDING)

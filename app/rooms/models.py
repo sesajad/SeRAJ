@@ -11,6 +11,7 @@ class RoomGroup(models.Model):
 class Room(models.Model):
     name = models.CharField(max_length=30)
     capacity = models.IntegerField()
+    type = models.CharField(max_length=128)
     rules = models.TextField()
     resources = models.TextField()
     group = models.ForeignKey(RoomGroup, on_delete=models.CASCADE)

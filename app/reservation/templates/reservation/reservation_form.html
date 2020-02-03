@@ -18,6 +18,18 @@
         <button type="submit" class="btn btn-success">Save</button>
         <a href="{% url 'home' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
       </form>
+    <script>
+      $(function () {
+        jQuery("#id_reserved_start_date").datetimepicker({
+          format:'Y-m-d H:m:s',
+          inline:true,
+        });
+        jQuery("#id_reserved_end_date").datetimepicker({
+          format:'Y-m-d H:m:s',
+          inline:true,
+        });
+      });
+    </script>
     </div>
   </div>
 {% endblock %}
